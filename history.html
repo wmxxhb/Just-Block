@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>验证历史 · Just Block</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="history.js" type="module"></script>
+</head>
+<body>
+  <main class="history-page">
+    <header><strong>Just Block</strong><a href="options.html">返回设置</a></header>
+    <h1>验证历史</h1>
+    <p id="since" class="muted">正在读取本地记录…</p>
+    <div class="history-stats" aria-label="累计统计">
+      <div><span>触发验证</span><strong id="total-triggered">—</strong></div>
+      <div><span>通过验证</span><strong id="total-passed">—</strong></div>
+      <div><span>未通过即结束</span><strong id="total-ended">—</strong></div>
+      <div><span>进行中</span><strong id="total-pending">—</strong></div>
+    </div>
+    <p id="breakdown" class="small-note"></p>
+    <p class="small-note">“未通过即结束”包含主动放弃、关闭、离开验证页和未完成的流程；不包含进行中或沿用已有放行的流程。</p>
+    <div class="history-toolbar">
+      <label for="kind" class="sr-only">记录类型</label>
+      <select id="kind"><option value="site">网站访问</option><option value="settings">设置解锁</option></select>
+      <button id="refresh" class="secondary">刷新记录</button>
+    </div>
+    <p id="history-error" class="error" role="alert" hidden></p>
+    <p id="empty" class="muted" hidden>还没有记录。从本版本起，触发验证后会在这里显示。</p>
+    <div id="history-table" class="table-scroll" hidden>
+      <table>
+        <thead><tr><th scope="col">触发时间</th><th scope="col">网站 / 操作</th><th scope="col">结果</th><th scope="col">结束时间</th></tr></thead>
+        <tbody id="records"></tbody>
+      </table>
+    </div>
+    <div class="history-pagination">
+      <button id="previous" class="secondary" disabled>上一页</button><span id="page-label" class="muted"></span><button id="next" class="secondary" disabled>下一页</button>
+    </div>
+    <p class="small-note">累计统计持续保留，明细保留最近 2000 次已结束验证及进行中的流程。记录仅保存在当前浏览器本地，不保存回答、帖子路径或搜索内容。</p>
+  </main>
+</body>
+</html>

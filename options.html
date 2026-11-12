@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="zh-CN">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Just Block 设置</title><link rel="stylesheet" href="style.css"><script src="options.js" type="module"></script></head>
+<body>
+  <main class="settings">
+    <header><strong>Just Block</strong><span class="muted">设置</span></header>
+    <h1>屏蔽的网站</h1>
+    <p class="muted">每行一个域名，包含其子域名。新增可直接保存；删除或修改需要先解锁。</p>
+    <label for="domains">网站名单</label>
+    <textarea id="domains" rows="9" spellcheck="false" placeholder="x.com&#10;twitter.com"></textarea>
+    <div class="actions"><button id="save">保存名单</button><button id="unlock" class="secondary">解锁删改</button></div>
+    <p id="status" role="status" class="muted"></p>
+    <hr>
+    <h2>访问规则</h2>
+    <p>五个问题逐屏提交，手打 200 字，再等 5 分钟。最后回看回答并手动确认，允许访问 10 分钟。</p>
+    <p class="muted">回答只在本次会话内临时保留，取消、关闭流程或进入后清除。关闭浏览器后需重新解锁。</p>
+    <hr>
+    <h2>验证历史</h2>
+    <p id="history-summary" class="muted">正在读取累计统计…</p>
+    <a class="history-link" href="history.html">查看历史记录</a>
+    <hr>
+    <h2>防停用</h2>
+    <p id="guardian-status" class="muted">正在读取系统保护状态…</p>
+    <button id="connect-guardian" class="secondary">连接 Windows 保护程序</button>
+    <p class="muted">请先右键以管理员身份运行 windows 文件夹内的安装程序。系统保护会修改 hosts 文件：关闭扩展后，名单内的域名仍无法正常连接。管理员、代理或未列出的子域名仍可能绕过。</p>
+  </main>
+</body>
+</html>

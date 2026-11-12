@@ -1,0 +1,14 @@
+<!doctype html>
+<html lang="zh-CN">
+<head><meta charset="utf-8"><title>Just Block</title><link rel="stylesheet" href="style.css"><script src="popup.js" type="module"></script></head>
+<body class="popup">
+  <header><strong>Just Block</strong></header>
+  <p id="status" class="muted">正在读取…</p>
+  <p id="protection" class="muted"></p>
+  <div class="popup-stats" aria-label="验证统计">
+    <div><strong id="attempts">—</strong><span>触发</span></div><div><strong id="passes">—</strong><span>通过</span></div><div><strong id="ended">—</strong><span>未通过即结束</span></div>
+  </div>
+  <button id="settings">管理网站名单</button>
+  <button id="history" class="secondary">查看历史记录</button>
+</body>
+</html>

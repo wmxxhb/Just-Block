@@ -1,0 +1,25 @@
+# Local development notes and credentials
+/AGENTS.md
+/DESIGN.md
+*.pem
+*.key
+.env
+.env.*
+
+# Personal data and local outputs
+*.log
+*.zip
+*.previous.exe
+config.json
+owner.sid
+native-host.json
+hosts-before-install.txt
+verificationHistory*
+work/
+outputs/
+
+# OS / editor files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

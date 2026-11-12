@@ -1,0 +1,44 @@
+{
+  "manifest_version": 3,
+  "name": "Just Block",
+  "description": "屏蔽指定网站，回答问题、手打文字并等待后临时访问。",
+  "version": "1.3.2",
+  "minimum_chrome_version": "120",
+  "permissions": [
+    "storage",
+    "alarms",
+    "declarativeNetRequest",
+    "tabs",
+    "webNavigation",
+    "nativeMessaging"
+  ],
+  "host_permissions": [
+    "http://*/*",
+    "https://*/*"
+  ],
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  "action": {
+    "default_title": "Just Block",
+    "default_popup": "popup.html"
+  },
+  "options_ui": {
+    "page": "options.html",
+    "open_in_tab": true
+  },
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "gate.html"
+      ],
+      "matches": [
+        "http://*/*",
+        "https://*/*"
+      ]
+    }
+  ],
+  "incognito": "not_allowed",
+  "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAwSKbSXcM847eJbxNrXta1wySsax1CO+lfdc6wN0A3RHO3eI80Iw1ft9BYg/dqDCw9cCXfaJsPt1pTW2+r5ChX1dAm2pgSAp7nnUDL5qx53pr7t5NDJcCnGhfCyWdOKTMrPOVMVewIa6typFNrnbXfd/WHV8vfgoFBVdC8Y5rpruhFUaFi+UkX3UlFChwsM2YlFarnpGQOzIML+LPuh9UbPOTWerWVKXOVpoHf4nSp4HUWC+nev8ERtbxj8wtt3kLafHSgiZViGyGhXVDD92363jQP4YsHaVoa71WgWy17Whi/IrmHTJzflgmKlw6qJrPikssoKj3qvcV3VZ1t/lk0QIDAQAB"
+}

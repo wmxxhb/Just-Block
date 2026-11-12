@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Just Block — 进入之前</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="gate.js" type="module"></script>
+</head>
+<body class="verification">
+  <header class="gate-header">
+    <a class="brand" href="options.html">Just Block</a>
+    <div class="destination"><span id="destination-label">你正在尝试访问</span><span id="target" class="mono"></span></div>
+  </header>
+  <div id="gate-scroll" class="gate-shell gate-scroll">
+    <div class="gate-progress">
+      <nav id="flow" class="phase-top" aria-label="验证进度" hidden><span id="step-label"></span><span id="step-name" class="sr-only"></span></nav>
+      <nav id="question-nav" class="question-nav" aria-label="已答题目，点击回看"></nav>
+    </div>
+      <main class="gate" id="gate" aria-busy="true">
+        <p id="error" class="error" role="alert" hidden></p>
+        <section id="questions" class="stage" hidden>
+          <h1 id="question-title" tabindex="-1"></h1>
+          <p id="review-note" class="small-note review-note" hidden></p>
+          <form id="questions-form" novalidate>
+            <div class="question-editor">
+              <label for="answer" class="sr-only">你的回答</label>
+              <span id="question-guidance" class="sr-only"></span>
+              <textarea id="answer" maxlength="500" autocomplete="off" spellcheck="false" aria-describedby="question-guidance answer-hint answer-error"></textarea>
+            </div>
+            <div class="field-footer"><span id="answer-hint"></span><span id="answer-count" class="mono count"></span></div>
+            <p id="answer-error" class="field-error" role="alert" hidden></p>
+            <div class="actions">
+              <button type="button" class="leave">放弃进入</button>
+              <button id="submit-answer" type="button" class="secondary forward">继续回答</button>
+              <button id="question-back" type="button" class="back" hidden>上一问</button>
+              <button id="resume-flow" type="button" class="back" hidden>返回当前进度（不保存修改）</button>
+            </div>
+          </form>
+        </section>
+        <section id="typing" class="stage" hidden>
+          <h1 tabindex="-1">把「你」改成「我」</h1>
+          <p class="instruction">逐字手动输入，禁止粘贴；其他文字与标点保持一致。</p>
+          <div class="statement-grid">
+            <section class="source-card" aria-label="声明原文">
+              <span class="source-label">原文</span>
+              <blockquote id="passage" aria-label="需要手动输入的完整文字"></blockquote>
+            </section>
+            <section class="typing-editor">
+              <label for="transcription" class="source-label">我的声明</label>
+              <textarea id="transcription" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="我主动封禁这个网站，是因为我……" aria-describedby="progress typing-hint"></textarea>
+            </section>
+          </div>
+          <div class="field-footer statement-bottom"><span id="progress" role="status" aria-live="polite">当前「你」，请输入「我」。</span><span id="match-count" class="mono count">0 / 200</span></div>
+          <p id="typing-hint" class="sr-only">原文高亮表示当前输入位置。每个“你”必须手动改成“我”，其余文字、标点保持一致。支持中文输入法，禁止粘贴或拖入。</p>
+          <div class="actions"><button type="button" class="leave">放弃进入</button><button id="start-wait" class="secondary forward" disabled>完成声明，开始等待</button><button id="typing-back" class="back">返回问题</button></div>
+        </section>
+        <section id="waiting" class="stage" hidden>
+          <h1 tabindex="-1">等待结束后再进入</h1>
+          <p class="instruction">你还没有完成的事情，现在就可以去做。等完之后，再决定是否仍然要进去。</p>
+          <div class="wait-panel">
+            <section><div id="countdown" class="timer mono" role="timer" aria-label="剩余等待时间">05:00</div><div id="wait-label" class="timer-label">距离可以进入</div></section>
+            <section class="task-recap" aria-label="本次访问计划"><h2>这次要做的事</h2><p id="wait-purpose"></p><h2>做到这里，就离开</h2><p id="wait-exit"></p></section>
+          </div>
+          <div class="actions"><button type="button" class="leave">放弃进入</button><button id="wait-next" class="secondary forward" disabled>等待结束后继续</button></div>
+          <p class="small-note">可以切换标签页，等待会继续。刷新不会跳过等待。</p>
+        </section>
+        <section id="confirm" class="stage" hidden>
+          <h1 id="confirm-title" tabindex="-1">看完这些，你仍然决定进去吗？</h1>
+          <p class="instruction">你已经知道自己为什么封禁它。仍然要进去，就遵守刚才写下的目的和退出条件。</p>
+          <div class="ready-grid">
+            <section class="ready-time"><div class="timer mono">10:00</div><p id="access-rule">从你确认进入的这一刻开始计时。到期重新屏蔽。</p></section>
+            <section class="task-recap" aria-label="本次访问计划"><h2>这次要做的事</h2><p id="confirm-purpose"></p><h2>做到这里，就离开</h2><p id="confirm-exit"></p></section>
+          </div>
+          <details class="all-answers"><summary>回看全部回答</summary><dl id="answer-summary" class="answer-summary"></dl></details>
+          <div class="actions"><button type="button" class="leave">放弃进入</button><button id="enter" class="secondary forward">进入，限时 10 分钟</button></div>
+        </section>
+        <section id="available" class="stage" hidden>
+          <h1 tabindex="-1">本次放行仍然有效。</h1>
+          <p class="instruction">记住你的目的。完成就离开，不继续寻找下一条内容。</p>
+          <div class="actions"><button type="button" class="leave">放弃进入</button><button id="open-available" class="secondary forward">继续访问</button></div>
+        </section>
+      </main>
+  </div>
+</body>
+</html>
